@@ -1,4 +1,7 @@
 import os
+import dbm
+import pickle
+import shelve
 # fout = open('D:\pyfiles\output.txt', 'w')
 # line1 = "Я ждал это время, и вот это время пришло,\n"
 # fout.write(line1)
@@ -20,14 +23,57 @@ import os
 # y = int(y)
 # z = x+y
 # print(str2.format(x, y, z))
+#
+# def walk(dirname):
+#     for name in os.listdir(dirname):
+#         path = os.path.join(dirname, name)
+#         if os.path.isfile(path):
+#             print(path)
+#         else:
+#             walk(path)
+#
+#
+# # walk(os.getcwd())
+#
+# # try:
+# #     fin = open("E:\\1.txt")
+# # except:
+# #     print('Что-то пошло не так.')
+#
+# db = dbm.open('captions', 'c')
+# db['cl.png'] = 'Photo'
+# # print(db['cl.png'])
+# # for key in db:
+# #     print(key, db[key])
+# db.close()
+# t = [1, 2, 3]
+# s = pickle.dumps(t)
+# print(s)
+# t1 = pickle.loads(s)
+# print(t1)
+# print(t1 is t)
+# d = shelve.open('1.1', 'c')
+# with shelve.open('1.1') as states:
+#     states['1'] = '1'
+#     states['2'] = '2'
+#
+# with shelve.open('1.1') as states:
+#     for key in states:
+#         print(key, " - ", states[key])
+#
+# # city = shelve.open('1.1').keys()
+# # print(city)
+# with shelve.open('1.1') as states:
+#     for city in states.keys():
+#         print(city, end=" ")
+# print()
+# with shelve.open('1.1') as states:
+#     for state in states.items():
+#         print(state)
 
-def walk(dirname):
-    for name in os.listdir(dirname):
-        path = os.path.join(dirname, name)
-        if os.path.isfile(path):
-            print(path)
-        else:
-            walk(path)
-
-
-walk(os.getcwd())
+filename = "D:/f12.txt"
+cmd = 'certutil -hashfile' + ' ' + filename
+fp = os.popen(cmd)
+res = fp.read()
+stat = fp.close()
+print(res)
