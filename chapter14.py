@@ -71,10 +71,34 @@ import shelve, wc
 #     for state in states.items():
 #         print(state)
 
-filename = "D:/f12.txt"
-cmd = 'certutil -hashfile' + ' ' + filename
-fp = os.popen(cmd)
-res = fp.read()
-stat = fp.close()
-# print(res)
-wc.linecount('wc.py')
+# filename = "D:/f12.txt"
+# cmd = 'certutil -hashfile' + ' ' + filename
+# fp = os.popen(cmd)
+# res = fp.read()
+# stat = fp.close()
+# # print(res)
+# wc.linecount('wc.py')
+
+def sed(file1, exchangestr, samplestr):
+    try:
+        f2 = open("file2", "w")
+    except:
+        print('Smth wrong, check filename or smth')
+    try:
+        f1 = open(file1, "r")
+    except:
+        print('Smth wrong, check filename or smth')
+    while True:
+        line = f1.readline()
+        if not line:
+            break
+        if line.strip() == samplestr:
+            f2.write(exchangestr + '\n')
+        else:
+            f2.write(line)
+    f1.close()
+    f2.close()
+
+
+file1 = 'file1'
+sed(file1, "fff", "asd")
