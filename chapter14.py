@@ -1,8 +1,7 @@
 import os
 import dbm
 import pickle
-import shelve
-import wc
+import shelve, wc
 # fout = open('D:\pyfiles\output.txt', 'w')
 # line1 = "Я ждал это время, и вот это время пришло,\n"
 # fout.write(line1)
