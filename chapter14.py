@@ -2,6 +2,7 @@ import os
 import dbm
 import pickle
 import shelve, wc
+# from __future__ import print_function, division
 # fout = open('D:\pyfiles\output.txt', 'w')
 # line1 = "Я ждал это время, и вот это время пришло,\n"
 # fout.write(line1)
@@ -101,4 +102,7 @@ def sed(file1, exchangestr, samplestr):
 
 
 file1 = 'file1'
-sed(file1, "fff", "asd")
+# sed(file1, "fff", "asd")
+
+
+
