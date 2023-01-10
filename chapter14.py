@@ -1,7 +1,11 @@
 import os
 import dbm
 import pickle
-import shelve, wc
+import shelve
+import wc
+import anagram_sets
+
+
 # from __future__ import print_function, division
 # fout = open('D:\pyfiles\output.txt', 'w')
 # line1 = "Я ждал это время, и вот это время пришло,\n"
@@ -80,6 +84,7 @@ import shelve, wc
 # # print(res)
 # wc.linecount('wc.py')
 
+
 def sed(file1, exchangestr, samplestr):
     try:
         f2 = open("file2", "w")
@@ -104,5 +109,5 @@ def sed(file1, exchangestr, samplestr):
 file1 = 'file1'
 # sed(file1, "fff", "asd")
 
-
-
+def store_anagrams(sometxtfile):
+    anagram_sets.all_anagrams()
