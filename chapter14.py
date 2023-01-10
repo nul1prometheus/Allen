@@ -107,10 +107,22 @@ def sed(file1, exchangestr, samplestr):
 
 
 file1 = 'file1'
-# sed(file1, "fff", "asd")
+# print(sed(file1, "fff", "asd"))
 
 def store_anagrams(sometxtfile):
     return anagram_sets.all_anagrams(sometxtfile)
 
 
-# print(store_anagrams('words.txt'))
+def read_anagrams(sometxtfile, someword):
+    a = anagram_sets.all_anagrams(sometxtfile)
+    try:
+        b = anagram_sets.signature(someword)
+        c = a[b]
+    except:
+        print('No such word')
+        raise SystemExit()
+    return c
+
+
+print(store_anagrams('words.txt'))
+print(read_anagrams('words.txt', 'asd'))
