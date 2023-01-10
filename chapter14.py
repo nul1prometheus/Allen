@@ -4,7 +4,7 @@ import pickle
 import shelve
 import wc
 import anagram_sets
-
+import hashlib
 
 # from __future__ import print_function, division
 # fout = open('D:\pyfiles\output.txt', 'w')
@@ -124,5 +124,40 @@ def read_anagrams(sometxtfile, someword):
     return c
 
 
-print(store_anagrams('words.txt'))
-print(read_anagrams('words.txt', 'asd'))
+# print(store_anagrams('words.txt'))
+# print(read_anagrams('words.txt', 'asd'))
+
+def obxodFile(path, level=1, d=[]):
+    # print('Level=', level, 'Content:', os.listdir(path))
+    try:
+        for i in os.listdir(path):
+            os.chdir(path)
+            if (os.path.abspath(i) not in d) and os.path.isfile(i):
+                d.append(os.path.abspath(i))
+            if os.path.isdir(path + '\\' + i):
+                    # print('Спускаемся', path + '\\' + i)
+                obxodFile(path + '\\' + i, level + 1)
+                    # print('Возвращаемся в', path)
+    except:
+        pass
+    return d
+
+pathsoffiles = obxodFile("""E:\\""")
+
+def md5sumsofsmth(d):
+    hashs = []
+    repeats = []
+    for i in d:
+        with open(i) as file_to_check:
+            # read contents of the file
+            data = file_to_check.read()
+            # pipe contents of the file through
+            if hashlib.md5(data).hexdigest() not in hashs:
+                hashs.append(hashlib.md5(data).hexdigest())
+            else:
+                repeats.append(i)
+        #Словарь с повторами????
+
+print(obxodFile("""E:\\"""))
+
+
