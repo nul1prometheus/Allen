@@ -110,4 +110,7 @@ file1 = 'file1'
 # sed(file1, "fff", "asd")
 
 def store_anagrams(sometxtfile):
-    anagram_sets.all_anagrams()
+    return anagram_sets.all_anagrams(sometxtfile)
+
+
+# print(store_anagrams('words.txt'))

@@ -36,7 +36,7 @@ def all_anagrams(filename):
             d[t] = [word]
         else:
             d[t].append(word)
-    print('Here is dict', d)
+    # print('Here is dict', d)
     return d
 
 
