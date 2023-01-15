@@ -143,21 +143,37 @@ def obxodFile(path, level=1, d=[]):
     return d
 
 pathsoffiles = obxodFile("""E:\\""")
-
+# print(pathsoffiles)
 def md5sumsofsmth(d):
-    hashs = []
-    repeats = []
-    for i in d:
-        with open(i) as file_to_check:
-            # read contents of the file
-            data = file_to_check.read()
-            # pipe contents of the file through
-            if hashlib.md5(data).hexdigest() not in hashs:
-                hashs.append(hashlib.md5(data).hexdigest())
-            else:
-                repeats.append(i)
-        #Словарь с повторами????
+    hashs = {}
+    repeats = {}
+    try:
+        for i in d:
+            with open(i, 'rb') as file_to_check:
+                # print(i)
+                m = hashlib.md5()
+                # read contents of the file
+                data = file_to_check.read()
+                # pipe contents of the file through
+                if not data:
+                    pass
+                m.update(data)
+                print('File: ', i, ',md5: ', m.hexdigest())
+                if m.hexdigest() not in hashs:
+                    hashs[m.hexdigest()] = i
+                else:
+                    repeats[hashs[m.hexdigest()]] = i
 
-print(obxodFile("""E:\\"""))
+        #         if hashlib.md5(data.encode()).hexdigest() not in hashs:
+        #             hashs[(hashlib.md5(data.encode()).hexdigest())] = i
+        #         else:
+        #             repeats[i] = repeats[i] + hashs[(hashlib.md5(data.encode()).hexdigest())]
+        # return repeats
+    except:
+        pass
+    return repeats
+
+
+print(md5sumsofsmth(pathsoffiles))
 
 
